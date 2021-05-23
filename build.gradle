@@ -2,11 +2,19 @@ plugins {
     id 'org.springframework.boot' version '2.3.12.BUILD-SNAPSHOT'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'idea'
 }
 
 group = 'com.maat'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
 
 configurations {
     compileOnly {

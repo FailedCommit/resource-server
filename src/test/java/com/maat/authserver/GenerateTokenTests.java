@@ -24,7 +24,7 @@ public class GenerateTokenTests {
     void generateTokenValidUserAndClientTest() throws Exception {
         mockMvc.perform(
                 post("/oauth/token")
-                        .with(httpBasic("maatApp", "password"))
+                        .with(httpBasic("client", "secret"))
                         .queryParam("grant_type", "password")
                         .queryParam("username", "mohit")
                         .queryParam("password", "mohit")
@@ -59,7 +59,7 @@ public class GenerateTokenTests {
     void generateTokenInvalidUserTest() throws Exception {
         mockMvc.perform(
                 post("/oauth/token")
-                        .with(httpBasic("maatApp", "password"))
+                        .with(httpBasic("client", "secret"))
                         .queryParam("grant_type", "password")
                         .queryParam("username", "other_user")
                         .queryParam("password", "mohit")
@@ -77,7 +77,7 @@ public class GenerateTokenTests {
     void generateTokenPasswordNotValidTest() throws Exception {
         mockMvc.perform(
                 post("/oauth/token")
-                        .with(httpBasic("maatApp", "password"))
+                        .with(httpBasic("client", "secret"))
                         .queryParam("grant_type", "password")
                         .queryParam("username", "mohit")
                         .queryParam("password", "other_password")
@@ -94,7 +94,7 @@ public class GenerateTokenTests {
     void generateRefreshTokenTest() throws Exception {
         mockMvc.perform(
                 post("/oauth/token")
-                        .with(httpBasic("maatApp", "password"))
+                        .with(httpBasic("client", "secret"))
                         .queryParam("grant_type", "password")
                         .queryParam("username", "mohit")
                         .queryParam("password", "mohit")

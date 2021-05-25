@@ -1,5 +1,6 @@
 package com.maat.authserver.config;
 
+import com.maat.authserver.security.services.JpaClientDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,14 +20,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private final TokenStore tokenStore;
     private final JwtAccessTokenConverter converter;
     private final UserDetailsService userDetailsService;
+    private final JpaClientDetailsService clientDetailsService;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
-                .withClient("client")
-                .secret("secret")
-                .authorizedGrantTypes("authorization_code", "password", "refresh_token")
-                .scopes("read");
+        clients.withClientDetails(clientDetailsService);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.maat.authserver;
+package com.maat.authserver.token;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
